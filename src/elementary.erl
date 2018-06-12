@@ -198,6 +198,7 @@ request(Method, Bucket, Path, Options) ->
 
     AllHeaders = [
         {<<"Host">>, Config#bucket.host},
+        {<<"x-amz-grant-read">>, <<"uri=http://acs.amazonaws.com/groups/global/AllUsers">>},
         {<<"Content-Length">>, integer_to_binary(byte_size(Body))}
     |Headers],
     {Auth, QueryString} = elementary_signature:headers(
